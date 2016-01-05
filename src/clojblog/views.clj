@@ -1,5 +1,7 @@
 (ns clojblog.views
   (:require [clojblog.model :as model]
+            [clojblog.partials :as partials]
+            [clojblog.config :as config]
             [hiccup.page :as page]
             [clojblog.config :as config]))
 
@@ -7,18 +9,18 @@
   "Base layout for site."
   (page/html5
     [:head
-     [:title "Hello World"]]
+     [:title "Clojblog"]]
     [:body
      [:div {:id "content"} content]]))
 
 
 (defn index []
-  (let [posts (model/read-all-posts "resources/content")]
+  (let [posts (model/read-all-posts (config/by-key :content-dir))]
     (layout [:ul
              (for [p posts]
-               [:li [:a {:href (str "/post/" (p :slug))} (p :title)]])])))
+               [:li (partials/post-in-list p)])])))
 
 (defn show-post [slug]
   (let [post (model/post-by-slug slug)]
-    (layout (post :content)))
+    (layout (:content post)))
   )
