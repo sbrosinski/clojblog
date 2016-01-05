@@ -9,9 +9,14 @@
   "Base layout for site."
   (page/html5
     [:head
+     (page/include-css "http://yui.yahooapis.com/pure/0.6.0/pure-min.css")
+     (page/include-css "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css")
      [:title "Clojblog"]]
     [:body
-     [:div {:id "content"} content]]))
+     [:div {:class "pure-g"}
+      [:div {:class "pure-u-1-24 pure-u-md-5-24"}]
+      [:div {:class "pure-u-11-12 pure-u-md-5-8"} content]
+      [:div {:class "pure-u-1-24 pure-u-md-1-6"}]]]))
 
 
 (defn index []
