@@ -8,17 +8,10 @@
 
 
 (defn index []
-
   (slm/render-file "templates/index.html"
-                   {:posts (model/read-all-posts (config/by-key :content-dir))})
-
-  )
-
+                   {:posts (model/read-all-posts (config/by-key :content-dir))}))
 
 (defn show-post [slug]
-
-   (let [post (model/post-by-slug slug)]
-     (slm/render-file "templates/post.html"
-                   {:post post}))
-
-  )
+  (let [post (model/post-by-slug slug)]
+    (slm/render-file "templates/post.html"
+                     {:post post})))
