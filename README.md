@@ -18,6 +18,10 @@ To start a web server for the application, run:
 
     lein ring server
 
+## Docker Container
+
+docker build -t clojblog .
+
 ## License
 
 Copyright © 2016 Stephan Brosinski

@@ -4,7 +4,8 @@
             [clojure.edn :as edn]
             [clojure.java.io :as io]
             [clojblog.config :as config]
-            [slugger.core :as slug]))
+            [slugger.core :as slug]
+            [clj-time.format :as tf]))
 
 (defn parse-post-data [data]
   "Splits the post file contents into a map of meta data and the post itself."
@@ -16,6 +17,7 @@
   (let [data (parse-post-data (slurp file))]
     {:meta (:meta data)
      :title (:title (:meta data))
+     :date (tf/parse (:date (:meta data)))
      :slug (slug/->slug (:title (:meta data)))
      :file file
      :content (md/md-to-html-string (:content data))}))

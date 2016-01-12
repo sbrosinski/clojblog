@@ -1,0 +1,10 @@
+{% extends "templates/layout.html" %}
+
+{% block content %}
+
+{{post.date|date:"yyyy-MM-dd"}}
+<h1>{{post.title}}</h1>
+
+{{post.content|safe}}
+
+{% endblock %}

@@ -14,10 +14,11 @@
 
 (defn from-edn
   [fname]
-  (with-open [rdr (-> (io/resource fname)
+  (with-open [rdr (-> (io/file fname)
                       io/reader
                       java.io.PushbackReader.)]
     (edn/read rdr)))
 
 (defn load-config! []
-  (reset! config-state (from-edn "config.edn")))
+  ;(println (or (System/getenv "CLOJBLOG_CFG") "config.edn"))
+  (reset! config-state (from-edn (or (System/getenv "CLOJBLOG_CFG") "config.edn"))))
