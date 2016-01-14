@@ -1,1 +1,6 @@
-{:content-dir "resources/content"}
+{
+ :content-store :dropbox
+ :content-dir "resources/content"
+
+
+ }

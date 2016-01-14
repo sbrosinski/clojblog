@@ -15,7 +15,7 @@
   (.. (client) files (downloadBuilder path)))
 
 
-(defn list-content-files [dir]
+(defn list-files [dir]
   "Gets list of files with their paths from flat dropbox folder."
   (log/info "Listing " dir " ...")
   (let [c (client)]

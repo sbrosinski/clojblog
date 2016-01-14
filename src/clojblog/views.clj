@@ -1,8 +1,6 @@
 (ns clojblog.views
   (:require [clojblog.model :as model]
-            [clojblog.partials :as partials]
             [clojblog.config :as config]
-            [hiccup.page :as page]
             [selmer.parser :as slm]
             [clojblog.config :as config]))
 
